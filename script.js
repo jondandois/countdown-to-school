@@ -1,9 +1,30 @@
  // Set the target date
  const targetDate = new Date("August 25, 2025 07:30:00");
+ const options = {
+    weekday: 'short',   // Mon
+    year: 'numeric',
+    month: 'long',      // August
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true        // 12-hour with AM/PM
+};
+
+const formatted = targetDate.toLocaleString('en-US', options);
+document.getElementById("days-until").textContent = `Days from present until ${formatted}`;
 
  // Add custom excluded days (yyyy-mm-dd format)
  const excludedDates = [
+     "2025-06-19", // Juneteenth
      "2025-07-04", // Independence Day
+     "2025-07-29", //
+     "2025-07-30", //
+     "2025-07-31", //
+     "2025-08-01", //
+     "2025-08-04", //
+     "2025-08-20", //
+     "2025-08-21", //
+     "2025-08-22", //
  ];
 
  // Helper to format a Date to yyyy-mm-dd
@@ -44,7 +65,7 @@
      const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
      document.getElementById("countdown-timer").innerHTML =
-         `${businessDays} week days ${hours}h ${minutes}m ${seconds}s`;
+         `${businessDays} days ${hours}h ${minutes}m ${seconds}s`;
  }, 1000);
 
  // Show/hide the off days window
